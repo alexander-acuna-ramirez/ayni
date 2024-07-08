@@ -1,0 +1,25 @@
+services:
+  ayni-postgresql:
+    image: postgres:16.3-alpine3.20
+    container_name: ayni-postgresql
+    environment:
+      POSTGRES_DB: ayni
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  ayni-web:
+    build: .
+    container_name: ayni-web
+    ports:
+    - "8080:8080"
+    depends_on:
+    - ayni-postgresql
+    environment:
+    - DATABASE_URL=jdbc:postgresql://ayni-postgresql:5432/ayni
+    - DATABASE_USER=postgres
+    - DATABASE_PASSWORD=password
+volumes:
+  postgres_data:
