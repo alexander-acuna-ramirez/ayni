@@ -21,5 +21,12 @@ services:
     - DATABASE_URL=jdbc:postgresql://ayni-postgresql:5432/ayni
     - DATABASE_USER=postgres
     - DATABASE_PASSWORD=password
+    develop:
+      watch:
+      - action: sync
+        target: ./src
+        path: ./src
+      - action: rebuild
+        path: .
 volumes:
   postgres_data:

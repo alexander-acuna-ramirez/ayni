@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AyniHubApplication {
 
 	public static void main(String[] args) {
+		System.out.println("sadsss");
 		SpringApplication.run(AyniHubApplication.class, args);
 	}
 

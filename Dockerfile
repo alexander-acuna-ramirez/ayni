@@ -8,5 +8,7 @@ WORKDIR /ayni
 COPY . /ayni
 EXPOSE 8080
 
-RUN chmod +x start.sh && ./gradlew dependencies
-CMD ["sh", "start.sh"]
+
+RUN ./gradlew dependencies 
+ENTRYPOINT ["tail", "-f", "/dev/null"]
+#ENTRYPOINT ["gradle", "bootRun", "-PskipDownload=true"]
